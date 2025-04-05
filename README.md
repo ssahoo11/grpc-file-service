@@ -1,18 +1,26 @@
 # grpc-file-service
 
-git clone https://github.com/ssahoo11/grpc-file-service.git
+### Clone this repo with below command
+```git clone https://github.com/ssahoo11/grpc-file-service.git```
 
-cd grpc-file-service/
+### Change the directory
+```cd grpc-file-service/```
 
-docker build -f Dockerfile.server --no-cache -t grpc-file-server:latest .
-docker build -f Dockerfile.client --no-cache -t grpc-file-client:latest .
+### Run below docker command to create server and client images
+```docker build -f Dockerfile.server --no-cache -t grpc-file-server:latest . ```
+```docker build -f Dockerfile.client --no-cache -t grpc-file-client:latest . ```
 
-docker create network grpc-network
+### Check new images
+``` docker images ```
 
-docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 grpc-file-server:latest
+### Create a custom network for the communication
+```docker create network grpc-network```
 
-#On a seperate shell run
+### Run the server with interactive mode to see the stdout logs
+``` docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 grpc-file-server:latest```
 
-docker run -it --name grpc-client --network grpc-network -p 50053:50053 grpc-file-client:latest
+### On a separate shell run the client container with interactive mode
+
+```docker run -it --name grpc-client --network grpc-network -p 50053:50053 grpc-file-client:latest```
 
 
