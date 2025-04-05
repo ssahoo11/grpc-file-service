@@ -103,6 +103,6 @@ func main() {
 	}
 
 	// Print the total time taken to process all files
-	fmt.Printf("\nTotal time taken to process %d all files: %v\n", size, totalTime)
+	fmt.Printf("\nTotal time taken to process %d size data: %v\n", size, totalTime)
 }
 
