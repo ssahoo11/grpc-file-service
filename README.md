@@ -26,3 +26,22 @@ This application follows a server-client model built using gRPC with Go. The ser
 ```docker run -it --name grpc-client --network grpc-network -p 50053:50053 grpc-file-client:latest```
 
 
+### Output of server container
+```
+$ docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 ssahoo1d/grpc-file-server
+creating file /app/dummy_files/testfile_0.txt with size 1073741824 bytes
+2025/04/05 06:03:36 Server is running on port 50053...
+
+```
+
+### Output of client container
+```
+$ docker run -it --name grpc-client --network grpc-network 240fd80b1d0b
+Reading from server file /app/dummy_files/testfile_0.txt
+Processed testfile_0.txt in 1.24246659s
+
+Total time taken to process 1073741824 size data: 1.24246659s
+$
+
+```
+
