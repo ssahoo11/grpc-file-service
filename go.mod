@@ -1,4 +1,4 @@
-module GRPC-POC
+module grpc-file-service 
 
 go 1.24.2
 

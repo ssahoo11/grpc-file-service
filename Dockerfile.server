@@ -1,0 +1,19 @@
+
+# Use an official Golang runtime as the base image
+FROM golang:1.24-alpine
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+# Copy the Go source code to the container
+COPY . .
+
+# Build the Go server binary
+RUN go build -o grpc-file-service ./FileService.go
+
+# Expose the port that the server will be listening on
+EXPOSE 50051
+
+# Command to run the server binary
+CMD ["./grpc-file-service"]
+
