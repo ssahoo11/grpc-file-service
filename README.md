@@ -1,5 +1,7 @@
 # grpc-file-service
 
+This application follows a server-client model built using gRPC with Go. The server listens on port 50053 for client requests, where clients can request the content of a specific file by providing the file name. It is assumed that the file is already mounted at the server's location. The server streams the file content back to the client.
+
 ### Clone this repo with below command
 ```git clone https://github.com/ssahoo11/grpc-file-service.git```
 
