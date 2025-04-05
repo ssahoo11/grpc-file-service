@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package fileservice;
+
+// Specify the Go import path
+option go_package = "./fileservice;fileservice";
+
+service FileService {
+    rpc ReadFile (ReadFileRequest) returns (stream ReadFileResponse);
+}
+
+message ReadFileRequest {
+    string filename = 1;
+}
+
+message ReadFileResponse {
+    bytes content = 1;
+}
