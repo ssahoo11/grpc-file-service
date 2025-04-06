@@ -81,6 +81,13 @@ Reading from server file /app/dummy_files/testfile_0.txt
 Processed testfile_0.txt in 1.24246659s
 
 Total time taken to process 1073741824 size data: 1.24246659s
+$
+```
+
+```bash
+$ docker run -it --network grpc-network --name grpc-file-java-client grpc-file-java-client
+Time taken to read and write the file of size 1073741824 is : 2.662626447 seconds.
+$
 ```
 
 ## License
