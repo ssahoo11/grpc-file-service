@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-file-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-file-client
+  template:
+    metadata:
+      labels:
+        app: grpc-file-client
+    spec:
+      containers:
+        - name: grpc-file-client
+          image: ssahoo1d/grpc-file-client:latest
+      imagePullSecrets:
+        - name: my-registry-secret

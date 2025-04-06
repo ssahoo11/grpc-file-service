@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-file-server
+spec:
+  selector:
+    app: grpc-file-server
+  ports:
+    - protocol: TCP
+      port: 50053
+      targetPort: 50053
+      nodePort: 30039
+  type: NodePort #clusterIP: None  # This is important for direct pod-to-pod communication
+
