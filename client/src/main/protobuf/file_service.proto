@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package fileservice;
+
+
+service FileService {
+    rpc ReadFile (ReadFileRequest) returns (stream ReadFileResponse);
+}
+
+message ReadFileRequest {
+    string filename = 1;
+}
+
+message ReadFileResponse {
+    bytes content = 1;
+}

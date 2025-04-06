@@ -1,0 +1,21 @@
+# Use Maven image with OpenJDK 11
+FROM maven:3.8-openjdk-11
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the whole project into the container
+COPY . .
+
+# Build the project using Maven
+RUN mvn clean package
+
+# After the Maven build, copy the JAR file into the container
+#COPY ./target/*.jar /app/grpc-file-client.jar
+
+# Run the jar file when the container starts
+ENTRYPOINT ["java", "-jar", "/app/target/grpc-file-client-1.0-SNAPSHOT.jar"]
+
+#CMD ["tail", "-f", "/dev/null"]
+
+
