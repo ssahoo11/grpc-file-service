@@ -29,6 +29,7 @@ Run the following commands to create the server and client Docker images:
 ```bash
 docker build -f Dockerfile.server --no-cache -t grpc-file-server:latest .
 docker build -f Dockerfile.client --no-cache -t grpc-file-client:latest .
+docker build -f Dockerfile_java.client --no-cache -t grpc-file-java-client:latest .
 ```
 
 ### Check New Images
@@ -52,7 +53,7 @@ docker create network grpc-network
 Run the server in interactive mode to see the stdout logs:
 
 ```bash
-docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 grpc-file-server:latest
+$ docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 grpc-file-server:latest
 ```
 
 ### Run the Client
@@ -60,7 +61,13 @@ docker run -it --name grpc-file-server --network grpc-network -p 50053:50053 grp
 In a separate shell, run the client container in interactive mode:
 
 ```bash
-docker run -it --name grpc-client --network grpc-network grpc-file-client:latest
+$ docker run -it --name grpc-client --network grpc-network grpc-file-client:latest
+```
+
+### Run the java based client
+
+```
+$ docker run -it --network grpc-network --name grpc-file-java-client grpc-file-java-client:latest
 ```
 
 ## Example Outputs
@@ -75,6 +82,7 @@ creating file /app/dummy_files/testfile_0.txt with size 1073741824 bytes
 
 ### Client Container Output
 
+#### Go based client
 ```bash
 $ docker run -it --name grpc-client --network grpc-network grpc-file-client
 Reading from server file /app/dummy_files/testfile_0.txt
@@ -83,9 +91,9 @@ Processed testfile_0.txt in 1.24246659s
 Total time taken to process 1073741824 size data: 1.24246659s
 $
 ```
-
+#### Java based client
 ```bash
-$ docker run -it --network grpc-network --name grpc-file-java-client grpc-file-java-client
+$ docker run -it --network grpc-network --name grpc-file-java-client grpc-file-java-client:latest
 Time taken to read and write the file of size 1073741824 is : 2.662626447 seconds.
 $
 ```
